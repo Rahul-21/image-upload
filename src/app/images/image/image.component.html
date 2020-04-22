@@ -1,0 +1,37 @@
+<div class="card" style="width:25rem">
+<div class="card-body">
+<form [formGroup]="formtemplate" (submit)="onsubmit(formtemplate.value)">
+    <div class="text-center">
+    <img [src]="imgsrc" width="350px" height="250px" (click)="fileUploader.click()">
+</div>
+    <div class="form-group">
+        <label>select a file to upload</label>
+        <input type="file" class="form-control" #fileUploader  formControlName="imageurl" (change)="showpreview($event)"> 
+        <div class="text-danger" *ngIf="issubmitted && formControls.imageurl.errors?.required">this field is reruired</div>
+    </div>
+    <div class="form-group">
+        <label>Caption</label>
+        <input class="form-control" formControlName="caption" placeholder="caption">
+        <div class="text-danger" *ngIf="issubmitted && formControls.caption.errors?.required">this field is reruired</div>
+   
+    </div>
+    <div class="form-group">
+        <select class="form-control" formControlName="category">
+            <option value="Animal" selected>Animal</option>
+            <option value="Vehicle">Vehicle</option>
+            <option value="Bird">Bird</option>
+            </select>
+    </div>
+    <div class="form-row">
+    <div class="form-group col-md-6">
+        <a routerLink="/image/list" class="btn btn-primary btn-block float-right">Go to Gallery</a>
+    </div>
+    <div class="form-group col-md-6">
+        <button type="submit" text="submit" class="btn-btn-success btn-block  float-right">
+              submit
+        </button>
+    </div>
+</div>
+</form>
+</div>
+</div>

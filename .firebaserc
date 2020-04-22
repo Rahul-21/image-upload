@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "image-gallery-7f84e": {
+      "hosting": {
+        "image-upload": [
+          "image-gallery-7f84e"
+        ]
+      }
+    }
+  }
+}
