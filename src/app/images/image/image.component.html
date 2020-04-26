@@ -2,11 +2,22 @@
 <div class="card-body">
 <form [formGroup]="formtemplate" (submit)="onsubmit(formtemplate.value)">
     <div class="text-center">
-    <img [src]="imgsrc" width="350px" height="250px" (click)="fileUploader.click()">
+
+    <img [src]="imgsrc" width="350px" height="250px"  (click)="fileUploader.click()">
+
 </div>
+<div class="uploadfilecontainer" (click)="fileInput.click()" appDragDrop (onFileDropped)="uploadFile($event)">
+    <input hidden type="file" #fileInput (change)="uploadFile($event.target.files)">
+  </div>
+  <div  class="files-list" *ngFor="let file of files;let i= index">
+      <p> {{ file }} </p>
+      <button class="delete-file" (click)="deleteAttachment(i)">
+        <img src="../../../assets/img/download.png">
+      </button>
+   </div>
     <div class="form-group">
         <label>select a file to upload</label>
-        <input type="file" class="form-control" #fileUploader  formControlName="imageurl" (change)="showpreview($event)"> 
+        <input type="file" class="form-control" #fileUploader formControlName="imageurl" (change)="showpreview($event)"> 
         <div class="text-danger" *ngIf="issubmitted && formControls.imageurl.errors?.required">this field is reruired</div>
     </div>
     <div class="form-group">
@@ -27,7 +38,7 @@
         <a routerLink="/image/list" class="btn btn-primary btn-block float-right">Go to Gallery</a>
     </div>
     <div class="form-group col-md-6">
-        <button type="submit" text="submit" class="btn-btn-success btn-block  float-right">
+        <button type="submit" text="submit" class="btn btn-success btn-block  float-right">
               submit
         </button>
     </div>

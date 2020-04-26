@@ -9,7 +9,7 @@ const routes: Routes = [
   {path:'',redirectTo:'image/upload',pathMatch:'full'},
   {path:'image',component:ImagesComponent,children:[
     {path:'upload',component:ImageComponent},
-    {path:'list',component:ImageListComponent}
+    {path:'list',component:ImageListComponent},
   ]}
 ];
 

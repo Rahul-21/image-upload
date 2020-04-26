@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
@@ -10,12 +10,15 @@ import { ImageComponent } from './images/image/image.component';
 import { ImagesComponent } from './images/image-component.component';
 import { ImageListComponent } from './images/image-list/image-list.component';
 import { environment }  from '../environments/environment';
+import { DragDropDirective } from './images/drag.directive';
+
 @NgModule({
   declarations: [
     AppComponent,
     ImagesComponent,
     ImageComponent,
-    ImageListComponent
+    ImageListComponent,
+    DragDropDirective
   ],
   imports: [
     BrowserModule,
@@ -26,6 +29,7 @@ import { environment }  from '../environments/environment';
     ReactiveFormsModule
   ],
   providers: [],
+  schemas:[CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
